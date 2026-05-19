@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤسسة عروض الانظمة الأمنية | أجهزة الأنتركم الذكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b1c3a; /* الأزرق الداكن الرسمي */
+            --secondary-color: #fca311; /* البرتقالي للأكشن */
+            --whatsapp-color: #25D366;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f4f8fb;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            text-align: right;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            cursor: zoom-in;
+            transition: var(--transition);
+        }
+        
+        img:hover {
+            opacity: 0.9;
+        }
+
+        /* --- الهيدر والقسم الرئيسي --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a6d 100%);
+            color: var(--text-light);
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text { flex: 1; min-width: 320px; }
+        .hero-image { flex: 1; min-width: 320px; text-align: center; }
+
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; color: var(--secondary-color); font-weight: 900; }
+        .hero h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--secondary-color); font-weight: 900; }
+        .hero h2 { font-size: 1.2rem; margin-bottom: 15px; opacity: 0.9; }
+        .hero p { font-size: 1.2rem; margin-bottom: 35px; line-height: 1.8; }
+
+        /* --- البانر الترويجي --- */
+        .promo-banner {
+            background: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- أزرار التواصل السريعة --- */
+        .contact-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-call { background: var(--secondary-color); color: var(--primary-color); }
+        .btn-whatsapp { background: var(--whatsapp-color); color: white; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+        /* --- الأقسام العامة --- */
+        .section { padding: 80px 0; background: #fff; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: var(--primary-color); font-weight: 800; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; width: 80px; height: 4px; background: var(--secondary-color); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* --- المواصفات (Grid) --- */
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px; 
+        }
+        
+        .spec-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+        .spec-card:hover { transform: translateY(-5px); border-color: var(--secondary-color); }
+        .spec-card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.3rem; }
+
+        /* --- المميزات (Layout Side Image) --- */
+        .features-wrap { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .features-img { flex: 1; min-width: 300px; }
+        .features-list { flex: 1; min-width: 300px; }
+
+        .feature-item {
+            background: var(--bg-light);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            border-right: 5px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+        .feature-item:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .feature-item h3 { color: var(--primary-color); margin-bottom: 8px; }
+
+        /* --- نقاط الألم (Pain Points) --- */
+        .pain-section { background: var(--primary-color); color: white; text-align: center; padding: 60px 20px; }
+        .pain-section h3 { font-size: 1.6rem; margin-bottom: 20px; font-weight: 500; line-height: 1.5; }
+        .highlight { color: var(--secondary-color); font-weight: 800; }
+
+        /* --- الشعارات --- */
+        .certs-container { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; margin-top: 40px; }
+        .certs-container img { max-height: 70px; filter: grayscale(100%); opacity: 0.7; transition: 0.3s; cursor: default; }
+        .certs-container img:hover { filter: grayscale(0); opacity: 1; }
+
+        /* --- FAQ --- */
+        .faq-box { max-width: 800px; margin: auto; }
+        .faq-item { background: #f9f9f9; padding: 20px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; color: var(--primary-color); display: flex; justify-content: space-between; align-items: center; }
+        .faq-item::after { content: '+'; font-size: 1.5rem; color: var(--secondary-color); }
+
+        /* --- Footer --- */
+        footer { background: #081223; color: white; padding: 60px 20px; text-align: center; }
+        .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--secondary-color); margin-bottom: 20px; }
+        .footer-desc { max-width: 700px; margin: 0 auto 30px; opacity: 0.8; }
+        .contact-display { font-size: 2rem; font-weight: 900; color: var(--secondary-color); direction: ltr; margin: 20px 0; display: block; }
+
+        /* Lightbox CSS remains same */
+        .image-modal { display: none; position: fixed; z-index: 9999; padding: 20px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 90%; animation: zoomIn 0.3s ease; }
+        @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .btn { width: 100%; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>مؤسسة عروض الانظمة الأمنية </h2>
+                <h3>عش في أمان وراحة بال مع حلول الإنتركم الذكي </h3>
+                <p>الإنتركم ليس مجرد جهاز اتصال، بل هو الانطباع الأول عن منزلك ومعيار الأمان الذي تبدأ منه جودة حياتك </p>
+                <div class="contact-group">
+                    <a href="tel:966571025752" class="btn btn-call">📞 تواصل معنا </a>
+                    <a href="https://wa.me/966571025752" target="_blank" class="btn btn-whatsapp">💬 واتساب مباشر</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/intercom-hero.jpg" alt="أجهزة الأنتركم الذكية">
+            </div>
+        </div>
+    </header>
+
+    <div class="promo-banner">
+        🔥 أجهزتك الذكية تعكس لهم جودة حياتك.. استقبل ضيوفك بلمسة عصرية
+    </div>
+
+    <section class="section" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">لماذا تحتاج إلى إنتركم ذكي؟ </h2>
+            <div class="grid-3">
+                <div class="spec-card">
+                    <h3>الأمان الاستباقي </h3>
+                    <p>تعرف على هوية الزائر وتحدث معه بفضل تقنيات الرؤية الليلية والتصوير عالي الدقة قبل دخول بيتك.</p>
+                </div>
+                <div class="spec-card">
+                    <h3>التحكم من أي مكان </h3>
+                    <p>استقبل المكالمات وافتح البوابات عبر هاتفك الذكي حتى لو كنت بعيداً بآلاف الأميال.</p>
+                </div>
+                <div class="spec-card">
+                    <h3>الخصوصية التامة </h3>
+                    <p>تجنب الإزعاج وتعامل مع الطرود البريدية دون الحاجة للاحتكاك المباشر أو فتح الباب فعلياً.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">مواصفات الإنتركم الذكي </h2>
+            <div class="grid-3">
+                <div class="spec-card"><h3>كاميرا عالية الدقة </h3></div>
+                <div class="spec-card"><h3>شاشة 5 بوصة </h3></div>
+                <div class="spec-card"><h3>صوت ثنائي الاتجاه </h3></div>
+                <div class="spec-card"><h3>فتح القفل عن بعد </h3></div>
+                <div class="spec-card"><h3>إنذار متكامل </h3></div>
+                <div class="spec-card"><h3>اتصال Wi-Fi/POE </h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #f9f9f9;">
+        <div class="container features-wrap">
+            <div class="features-img">
+                <img src="images/intercom-system.jpg" alt="نظام الربط المتعدد ">
+            </div>
+            <div class="features-list">
+                <h2 class="section-title" style="text-align: right; margin-left: 0;">مميزات منتجاتنا </h2>
+                <div class="feature-item">
+                    <h3>نظام الربط المتعدد (Multi-Zone) </h3>
+                    <p>توزيع الشاشات عبر الطوابق لضمان التحكم الكامل والاتصال الداخلي بين أفراد العائلة.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>تصميم عصري وأنيق </h3>
+                    <p>شاشات تتناسب مع ديكور منزلك وترفع من قيمة عقارك وتضفي طابع الفخامة.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>مقاومة الظروف القاسية </h3>
+                    <p>وحدات خارجية متينة تتحمل الحرارة العالية والأمطار في المملكة.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>الضمان الذهبي </h3>
+                    <p>ضمان لمدة سنة كاملة أو أكثر مع خدمة ما بعد البيع المتميزة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h3>لماذا تستمر في التعامل مع ضيوفك بالطريقة التقليدية؟ </h3>
+            <h3>حوّل منزلك إلى <span class="highlight">منزل ذكي</span> يعكس رقي حياتك واهتمامك بالتفاصيل.</h3>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">ثقة واعتماد عملائنا </h2>
+            <p style="text-align: center;">نفخر بشهادات الجهات المعتمدة التي تثبت جودة خدمتنا </p>
+            <div class="certs-container">
+                <img src="images/sbc-logo.png" alt="المركز السعودي للأعمال ">
+                <img src="images/zatca-logo.png" alt="هيئة الزكاة والضريبة والجمارك ">
+                <img src="images/maroof-logo.png" alt="معروف">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة </h2>
+            <div class="faq-box">
+                <div class="faq-item">1. هل يمكنني الرد على الجرس وفتح الباب وأنا خارج المنزل؟ </div>
+                <div class="faq-item">2. ماذا يحدث إذا قام شخص ما بضغط الجرس وأنا نائم أو غير موجود؟ </div>
+                <div class="faq-item">3. هل تتحمل أجهزة الأنتركم الظروف الجوية القاسية (الحرارة والغبار)؟ </div>
+                <div class="faq-item">4. هل الرؤية الليلية واضحة بما يكفي لرؤية الوجوه؟ </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">مؤسسة عروض الانظمة الأمنية </div>
+            <p class="footer-desc">متجر أسعار الجملة للكاميرات والشبكات. مؤسسة متخصصة في توريد وتركيب الأنظمة الأمنية، الإنتركم، والسنترالات.</p>
+            <p>تواصل مع فريق المبيعات فوراً:</p>
+            <span class="contact-display">+966 57 102 5752</span>
+            <div class="contact-group" style="justify-content: center; margin-top: 20px;">
+                <a href="tel:966571025752" class="btn btn-call">📞 اتصل الآن</a>
+                <a href="https://wa.me/966571025752" target="_blank" class="btn btn-whatsapp">💬 واتساب مباشر</a>
+            </div>
+            <p style="margin-top: 40px; opacity: 0.5; font-size: 0.9rem;">&copy; 2026 جميع الحقوق محفوظة </p>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("fullImage");
+        const closeModal = document.getElementsByClassName("close-modal")[0];
+        const allImages = document.querySelectorAll('img:not(.certs-container img)');
+
+        allImages.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                document.body.style.overflow = "hidden";
+            }
+        });
+
+        closeModal.onclick = closeImage;
+        modal.onclick = function(e) { if (e.target === modal) closeImage(); };
+        function closeImage() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    </script>
+</body>
+</html>
