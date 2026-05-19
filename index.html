@@ -165,8 +165,43 @@
 
         /* --- FAQ --- */
         .faq-box { max-width: 800px; margin: auto; }
-        .faq-item { background: #f9f9f9; padding: 20px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; color: var(--primary-color); display: flex; justify-content: space-between; align-items: center; }
-        .faq-item::after { content: '+'; font-size: 1.5rem; color: var(--secondary-color); }
+        .faq-item { 
+            background: #f9f9f9; 
+            margin-bottom: 10px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+        }
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .faq-question:hover { background: #f0f0f0; }
+        .faq-question::after { 
+            content: '+'; 
+            font-size: 1.5rem; 
+            color: var(--secondary-color); 
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: #555;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        /* التنسيقات عندما يكون السؤال مفتوحاً (نشطاً) */
+        .faq-item.active .faq-question::after { content: '-'; }
+        .faq-item.active .faq-answer {
+            max-height: 250px; 
+            padding: 10px 20px 20px 20px;
+            border-top: 1px solid #ddd;
+        }
 
         /* --- Footer --- */
         footer { background: #081223; color: white; padding: 60px 20px; text-align: center; }
@@ -174,7 +209,7 @@
         .footer-desc { max-width: 700px; margin: 0 auto 30px; opacity: 0.8; }
         .contact-display { font-size: 2rem; font-weight: 900; color: var(--secondary-color); direction: ltr; margin: 20px 0; display: block; }
 
-        /* Lightbox CSS remains same */
+        /* Lightbox CSS */
         .image-modal { display: none; position: fixed; z-index: 9999; padding: 20px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; }
         .modal-content { margin: auto; display: block; max-width: 90%; max-height: 90%; animation: zoomIn 0.3s ease; }
         @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -186,7 +221,8 @@
             .btn { width: 100%; margin-bottom: 10px; }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
+
+     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16739705581">
 </script>
 <script>
@@ -304,10 +340,22 @@
         <div class="container">
             <h2 class="section-title">الأسئلة الشائعة </h2>
             <div class="faq-box">
-                <div class="faq-item">1. هل يمكنني الرد على الجرس وفتح الباب وأنا خارج المنزل؟ </div>
-                <div class="faq-item">2. ماذا يحدث إذا قام شخص ما بضغط الجرس وأنا نائم أو غير موجود؟ </div>
-                <div class="faq-item">3. هل تتحمل أجهزة الأنتركم الظروف الجوية القاسية (الحرارة والغبار)؟ </div>
-                <div class="faq-item">4. هل الرؤية الليلية واضحة بما يكفي لرؤية الوجوه؟ </div>
+                <div class="faq-item">
+                    <div class="faq-question">1. هل يمكنني الرد على الجرس وفتح الباب وأنا خارج المنزل؟</div>
+                    <div class="faq-answer">نعم بكل تأكيد! بمجرد ربط الإنتركم بشبكة الإنترنت (Wi-Fi)، سيصلك اتصال مباشر على هاتفك الذكي أينما كنت، ويمكنك التحدث مع الزائر وفتح الباب بضغطة زر.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">2. ماذا يحدث إذا قام شخص ما بضغط الجرس وأنا نائم أو غير موجود؟</div>
+                    <div class="faq-answer">الإنتركم الذكي سيقوم بإرسال إشعار إلى هاتفك، كما يمكنه التقاط صورة أو فيديو قصير للزائر وحفظه لتتمكن من مراجعته لاحقاً ومعرفة من زارك أثناء غيابك.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">3. هل تتحمل أجهزة الأنتركم الظروف الجوية القاسية (الحرارة والغبار)؟</div>
+                    <div class="faq-answer">نعم، جميع الوحدات الخارجية مصممة بمعايير مقاومة عالية (مثل IP65 أو أعلى) لتتحمل حرارة الشمس القوية، الغبار، والأمطار لتناسب أجواء المملكة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">4. هل الرؤية الليلية واضحة بما يكفي لرؤية الوجوه؟</div>
+                    <div class="faq-answer">نعم، الكاميرات مزودة بتقنية الأشعة تحت الحمراء (IR) أو إضاءة LED مدمجة تضمن لك صورة واضحة وتفاصيل دقيقة لملامح الزائر حتى في الظلام التام.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -332,9 +380,10 @@
     </div>
 
     <script>
+        // كود Lightbox الخاص بالصور
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("fullImage");
-        const closeModal = document.getElementsByClassName("close-modal")[0];
+        const closeModalBtn = document.getElementsByClassName("close-modal")[0];
         const allImages = document.querySelectorAll('img:not(.certs-container img)');
 
         allImages.forEach(img => {
@@ -345,12 +394,25 @@
             }
         });
 
-        closeModal.onclick = closeImage;
+        closeModalBtn.onclick = closeImage;
         modal.onclick = function(e) { if (e.target === modal) closeImage(); };
+        
         function closeImage() {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
         }
+
+        // كود تشغيل قسم الأسئلة الشائعة (FAQ)
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                
+                // إضافة أو إزالة فئة active لتشغيل الأنيميشن
+                item.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
