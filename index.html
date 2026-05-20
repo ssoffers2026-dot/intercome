@@ -170,6 +170,7 @@
             margin-bottom: 10px; 
             border-radius: 8px; 
             overflow: hidden; 
+            border: 1px solid #eee;
         }
         .faq-question {
             padding: 20px;
@@ -198,7 +199,7 @@
         /* التنسيقات عندما يكون السؤال مفتوحاً (نشطاً) */
         .faq-item.active .faq-question::after { content: '-'; }
         .faq-item.active .faq-answer {
-            max-height: 250px; 
+            max-height: 350px; /* زيادة الطول قليلاً ليناسب الجوال */
             padding: 10px 20px 20px 20px;
             border-top: 1px solid #ddd;
         }
@@ -210,19 +211,92 @@
         .contact-display { font-size: 2rem; font-weight: 900; color: var(--secondary-color); direction: ltr; margin: 20px 0; display: block; }
 
         /* Lightbox CSS */
-        .image-modal { display: none; position: fixed; z-index: 9999; padding: 20px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; }
+        .image-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            padding: 20px; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.9); 
+            align-items: center; 
+            justify-content: center; 
+        }
         .modal-content { margin: auto; display: block; max-width: 90%; max-height: 90%; animation: zoomIn 0.3s ease; }
         @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+        .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; z-index: 10001; }
 
+        /* =========================================
+           تنسيقات الجوال المعدلة (Responsive)
+           ========================================= */
         @media (max-width: 768px) {
+            body { font-size: 15px; }
+            .container { width: 92%; }
+            .section { padding: 50px 0; }
+
+            /* الهيدر */
+            .hero { padding: 40px 10px; }
+            .hero-content { flex-direction: column; text-align: center; gap: 20px; }
             .hero h1 { font-size: 2rem; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .btn { width: 100%; margin-bottom: 10px; }
+            .hero h3 { font-size: 1.4rem; }
+            .hero p { font-size: 1rem; margin-bottom: 20px; }
+            .hero-text { flex: auto; min-width: 100%; }
+            .hero-image { flex: auto; min-width: 100%; margin-top: 20px;}
+
+            /* أزرار التواصل في الهيدر */
+            .contact-group { flex-direction: column; gap: 10px; width: 100%; }
+            .btn { width: 100%; font-size: 1rem; padding: 12px; }
+
+            /* البانر */
+            .promo-banner { font-size: 1rem; padding: 10px; }
+
+            /* العناوين */
+            .section-title { font-size: 1.7rem; margin-bottom: 30px; }
+            
+            /* --- التعديل الجوهري: صور المنتجات صورتين في الصف --- */
+            /* نستهدف القسم الأول الذي يحتوي على الصور فقط */
+            .hero + .promo-banner + .section .grid-3 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px; /* تقليل المسافة ليناسب الصور */
+            }
+            .hero + .promo-banner + .section .grid-3 .product-card img {
+                height: 150px; /* توحيد طول الصور لجعل الصف متساوي */
+                object-fit: cover; /* لضمان عدم تمدد الصورة بشكل خاطئ */
+            }
+
+            /* --- باقي الجريدات (النصوص والمواصفات) تبقى صف واحد --- */
+            /* نستخدم selector أدق لاستبعاد الجريد الأول */
+            .section:not(:nth-of-type(1)) .grid-3 { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+            .spec-card { padding: 20px; }
+
+            /* المميزات */
+            .features-wrap { flex-direction: column; gap: 20px; }
+            .features-img, .features-list { flex: auto; min-width: 100%; }
+            .feature-item { padding: 15px; margin-bottom: 15px; }
+
+            /* نقاط الألم */
+            .pain-section h3 { font-size: 1.3rem; }
+
+            /* الشعارات */
+            .certs-container { gap: 20px; margin-top: 20px; }
+            .certs-container img { max-height: 50px; }
+
+            /* FAQ */
+            .faq-question { padding: 15px; font-size: 1rem; }
+            .faq-answer { font-size: 0.9rem; padding: 0 15px; }
+
+            /* Footer */
+            footer { padding: 40px 10px; }
+            .contact-display { font-size: 1.4rem; }
+            footer .contact-group { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            footer .contact-group .btn { width: 48%; min-width: 140px; }
         }
     </style>
 
-     <!-- Google tag (gtag.js) -->
+         <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16739705581">
 </script>
 <script>
@@ -238,23 +312,45 @@
     <header class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h2>مؤسسة عروض الانظمة الأمنية </h2>
+                
                 <h3>عش في أمان وراحة بال مع حلول الإنتركم الذكي </h3>
                 <p>الإنتركم ليس مجرد جهاز اتصال، بل هو الانطباع الأول عن منزلك ومعيار الأمان الذي تبدأ منه جودة حياتك </p>
-                <div class="contact-group">
-                    <a href="tel:966571025752" class="btn btn-call">📞 تواصل معنا </a>
-                    <a href="https://wa.me/966571025752" target="_blank" class="btn btn-whatsapp">💬 واتساب مباشر</a>
-                </div>
+                
             </div>
             <div class="hero-image">
                 <img src="images/intercom-hero.jpg" alt="أجهزة الأنتركم الذكية">
             </div>
+            <div class="contact-group">
+                    <a href="tel:966571025752" class="btn btn-call">📞 تواصل معنا </a>
+                    <a href="https://wa.me/966571025752" target="_blank" class="btn btn-whatsapp">💬 واتساب مباشر</a>
+                </div>
         </div>
     </header>
 
     <div class="promo-banner">
         🔥 أجهزتك الذكية تعكس لهم جودة حياتك.. استقبل ضيوفك بلمسة عصرية
     </div>
+
+    <section class="section">
+        <div class="container">
+          
+            <div class="grid-3">
+                <div class="product-card">
+                    <img src="images/intercom1.jpg" alt="intercom products">
+                </div>
+                <div class="product-card">
+                    <img src="images/intercom2.jpg" alt="intercom products">
+                </div>
+                <div class="product-card">
+                    <img src="images/intercom3.jpg" alt="intercom products">
+                </div>
+                <div class="product-card">
+                    <img src="images/intercome4.jpg" alt="intercom products">
+                </div>
+               
+            </div>
+        </div>
+    </section>
 
     <section class="section" style="background-color: #f0f4f8;">
         <div class="container">
@@ -380,11 +476,12 @@
     </div>
 
     <script>
-        // كود Lightbox الخاص بالصور
+        // كود Lightbox الخاص بالصور (لا يزال يعمل لتكبير الصور عند الضغط)
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("fullImage");
         const closeModalBtn = document.getElementsByClassName("close-modal")[0];
-        const allImages = document.querySelectorAll('img:not(.certs-container img)');
+        // نستهدف فقط الصور داخل product-card أو الهيدر لعدم تكبير الشعارات
+        const allImages = document.querySelectorAll('.product-card img, .hero-image img, .features-img img');
 
         allImages.forEach(img => {
             img.onclick = function() {
@@ -397,6 +494,11 @@
         closeModalBtn.onclick = closeImage;
         modal.onclick = function(e) { if (e.target === modal) closeImage(); };
         
+        // إغلاق بمفتاح ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.style.display === "flex") closeImage();
+        });
+
         function closeImage() {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
@@ -408,8 +510,6 @@
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
-                
-                // إضافة أو إزالة فئة active لتشغيل الأنيميشن
                 item.classList.toggle('active');
             });
         });
